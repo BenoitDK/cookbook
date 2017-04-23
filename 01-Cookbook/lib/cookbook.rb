@@ -1,22 +1,18 @@
 require 'csv'
 
 class Cookbook
-  def initialize(csv_path)
+  def initialize(csv_path) # You need a path to the csv.
     @recipes = []
-
-    # @recipes is an Array of Recipe Instances
-    # csv_options = [ quote_char: ‘“‘, col_sep: ‘,‘ ]
-
     @csv_path = csv_path
+    @csv_options = csv_options
 
+
+  def load_csv
     CSV.foreach(@csv_path) do |row|
-     @recipes << Recipe.new(row[0],row[1])
-     return @recipes
-   end
-
-      # An array of 2 strings
-      # An object that needs 2 strings to instantiate
- end
+      @recipes << Recipe.new(row[0],row[1])
+    end
+  end
+end
   # CRUD
   # CREATE
   def add_recipe(recipe)
@@ -50,8 +46,8 @@ class Cookbook
       @recipes.each do |recipe|
         csv << ['recipe']
       end
+    end
   end
-end
 end
 
 

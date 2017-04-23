@@ -2,7 +2,12 @@ class View
   # OUTPUT
   def display(recipes)
     recipes.each_with_index do |recipe, index|
-      puts "#{index + 1} - #{recipe}"
+      puts "#{index + 1} - #{recipe.name} #{recipe.description}"
+      # we put .name or .description because recipe is an object
+      # and we need to access its name and its description.
+      # this is because you have a reader on recipe. The reader
+      # is in the file recipe.rb.
+
     end
   end
 
@@ -29,7 +34,7 @@ class View
     return gets.chomp.to_i - 1
   end
 
-  def destroy_recipe
+  def destroy_recipes
     puts "Which recipe do you want to destroy?"
     ask_user_for_index
   end

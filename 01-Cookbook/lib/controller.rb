@@ -1,5 +1,6 @@
 require_relative "view"
 require_relative "recipe"
+
 class Controller
   def initialize(cookbook)
     @cookbook = cookbook
@@ -8,7 +9,6 @@ class Controller
 
   def list
     display_recipes
-
   end
 
   def create
@@ -25,7 +25,6 @@ class Controller
     recipe = @cookbook.remove(index) # removes task from repo
   end
 
-  private
 
   def display_recipes
     recipes = @cookbook.all
